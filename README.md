@@ -71,15 +71,57 @@ The table illustrates a significant improvement in accuracy following the fine-t
 
 The increase in accuracy by 6.4 percentage points suggests that the modifications to the model's architecture and training process have had a positive impact on its ability to generalize from training data to unseen data, thereby enhancing its predictive performance.
 
-### Visualizations
+## Advanced Options: Quantization-Aware Training (QAT)
 
-To further illustrate these improvements, visual representations such as graphs and charts are provided within the notebook. These include:
+### Overview
 
-- **Accuracy over epochs**: A line graph showing the progression of accuracy on the training and validation sets over each epoch, highlighting how the model's performance improves as it learns.
-- **Loss over epochs**: A line graph depicting the reduction in loss over time, which correlates with the increase in accuracy, indicating better model optimization.
+Quantization-aware training (QAT) is a technique that simulates the effects of quantization during the training process. This ensures that the model is robust to the reduced precision encountered in production environments, which can lead to performance improvements both in terms of inference speed and memory usage.
 
-These visualizations help in understanding the dynamic changes in model behavior over the training period and validate the effectiveness of the fine-tuning approach employed.
+### Application in LoRA Fine-Tuning
 
+For the LoRA fine-tuned GPT-2 model, applying QAT helps to reduce the model size and enhance inference speed without significant loss in accuracy. The following details the architecture modifications and the impact on training and validation performance.
+
+### Model Architecture
+
+The GPT-2 model architecture adapted for QAT with LoRA includes several key components:
+
+- **Embeddings**: Word and position embeddings.
+- **Dropout**: Dropout layers to prevent overfitting.
+- **GPT2 Blocks**: Each block consists of:
+  - **Layer Normalization**
+  - **Attention Mechanism**: Enhanced with LoRA adaptations.
+  - **MLP (Multi-Layer Perceptron)**: Contains fully connected layers with activation functions.
+  
+Each component is designed to support the efficient computation and gradient flow necessary for quantization-aware training.
+
+```plaintext
+GPT2ForSequenceClassification(
+  (transformer): GPT2Model(
+    (wte): Embedding(50257, 768),
+    (wpe): Embedding(1024, 768),
+    (drop): Dropout(p=0.1, inplace=False),
+    ...
+    (ln_f): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+  ),
+  (score): ModulesToSaveWrapper(
+    (original_module): Linear(in_features=768, out_features=2, bias=False),
+    (modules_to_save): ModuleDict(
+      (default): Linear(in_features=768, out_features=2, bias=False)
+    )
+  )
+)
+
+## Training and Validation Performance
+
+Applying Quantization-Aware Training (QAT) to the LoRA fine-tuned model has demonstrated effective maintenance of high accuracy while significantly reducing the model size. Here is a snapshot of the model's performance metrics:
+
+| Epoch | Training Loss | Validation Loss | Accuracy  |
+|-------|---------------|-----------------|-----------|
+| 1     | 0.505200      | 0.533796        | 0.737067  |
+
+## Analysis Results
+
+The integration of quantization-aware training into the LoRA fine-tuning process has proven to be an advanced and effective strategy for optimizing GPT-2 models. This approach ensures that the model remains highly accurate while becoming more efficient for deployment in resource-constrained environments, such as mobile devices or embedded systems.
 
 ### Results Interpretation
 
