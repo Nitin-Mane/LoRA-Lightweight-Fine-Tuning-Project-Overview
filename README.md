@@ -11,7 +11,6 @@ This repository contains a Jupyter notebook (`LightweightFineTuning_main.ipynb`)
 - [Methodology](#methodology)
 - [Results](#results)
 - [Conclusion](#conclusion)
-- [License](#license)
 
 ## Introduction
 
