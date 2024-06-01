@@ -30,8 +30,8 @@ This project explores the effectiveness of the LoRA method for fine-tuning pre-t
 To set up your environment to run the notebook, follow these steps:
 
 ```bash
-git clone https://github.com/your-username/your-repository.git
-cd your-repository
+git clone https://github.com/Nitin-Mane/LoRA-Lightweight-Fine-Tuning-Project-Overview.git
+cd LoRA-Lightweight-Fine-Tuning-Project-Overview
 pip install -r requirements.txt
 ```
 
