@@ -110,6 +110,7 @@ GPT2ForSequenceClassification(
     )
   )
 )
+```
 
 ## Training and Validation Performance
 
