@@ -44,7 +44,7 @@ The notebook employs the Low Rank Adaptation (LoRA) technique to parameter-effic
 
 ### Dataset
 
-The dataset utilized for training and evaluation is sourced from the Hugging Face `datasets` library. Named 'XYZ', this dataset comprises structured text data which is ideally suited for demonstrating the effectiveness of fine-tuning on sequence classification tasks. Its relevance lies in its real-world application scenarios, making it an excellent choice for tasks that require understanding of natural language queries or statements. 
+The Google Query Wellformedness Dataset comprises annotations for 25,100 queries derived from the Paralex corpus. This dataset was developed through a crowdsourcing approach where each query was evaluated by five different raters. The raters provided binary ratings (1 or 0) to determine the well-formedness of each query, aiming to assess whether the queries are grammatically and structurally sound
 
 The dataset is split into three parts: training, validation, and test, ensuring that the model can be trained, fine-tuned, and evaluated comprehensively. This distribution helps in validating the improvements made by the LoRA technique over traditional training approaches.
 
